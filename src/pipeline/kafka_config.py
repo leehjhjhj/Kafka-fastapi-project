@@ -1,0 +1,3 @@
+KAFKA_BOOTSTRAP_SERVERS = ['my-kafka:9092']
+KAFKA_TOPIC_NAME = 'test'
+VALUE_SERIALIZER = str.encode
