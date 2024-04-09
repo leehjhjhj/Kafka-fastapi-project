@@ -8,7 +8,7 @@ class Producer:
         self.producer = KafkaProducer(
             bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
             value_serializer=VALUE_SERIALIZER
-            )
+        )
 
     def send(self, message: Message):
         message_str = json.dumps(message.__dict__)
