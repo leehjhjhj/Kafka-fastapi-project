@@ -1,7 +1,9 @@
 from pydantic import BaseModel
 
 class Message(BaseModel):
-    message: str
+    title: str
+    link: str
+    img_link: str
 
 class KafkaResponse(BaseModel):
     message: str
