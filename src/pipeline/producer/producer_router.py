@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from .producer import Producer
-from .schema import Message, KafkaResponse
-import json
+from .schema import Message
 
 producer_route = APIRouter()
 
