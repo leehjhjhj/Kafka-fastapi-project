@@ -40,11 +40,11 @@ class RawArticleConsumer(Consumer):
     async def consume(self):
         try:
             async for msg in self.consumer:
-                if not await self._is_exist_article(msg) and self._is_keyword_in_title(msg):
+                if self._is_keyword_in_title(msg) and not await self._is_exist_article(msg):
                     try:
                         print(f"✅ {msg.value['title']} sending")
                         sending_message = json.dumps(msg.__dict__)
-                        await self.producer.send_and_wait(topic='filtered.article', value=sending_message)
+                        await self.producer.send_and_wait(topic='article.crawling.requests', value=sending_message)
                     except Exception as e:
                         print(f"Sending error: {e}")
         except Exception as e:
