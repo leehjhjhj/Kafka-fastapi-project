@@ -44,7 +44,7 @@ class RawArticleConsumer(Consumer):
                     try:
                         print(f"✅ {msg.value['title']} sending")
                         sending_message = json.dumps(msg.__dict__)
-                        await self.producer.send_and_wait(topic='article.crawling.requests', value=sending_message)
+                        await self.producer.send_and_wait(topic='article.translation.requests', value=sending_message)
                     except Exception as e:
                         print(f"Sending error: {e}")
         except Exception as e:
