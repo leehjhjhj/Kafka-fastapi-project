@@ -42,8 +42,8 @@ class RawArticleConsumer(Consumer):
             async for msg in self.consumer:
                 if self._is_keyword_in_title(msg) and not await self._is_exist_article(msg):
                     try:
-                        print(f"✅ {msg.value['title']} sending")
-                        sending_message = json.dumps(msg.__dict__)
+                        print(f"✅ {msg} sending")
+                        sending_message = json.dumps(msg.value)
                         await self.producer.send_and_wait(topic='article.translation.requests', value=sending_message)
                     except Exception as e:
                         print(f"Sending error: {e}")
