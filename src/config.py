@@ -18,11 +18,14 @@ schema = os.environ.get('DB_SCHEMA')
 def get_async_mysql_uri():
     return f"mysql+aiomysql://{user}:{password}@{host}:{port}/{schema}?charset=utf8mb4"
 
+def get_sync_mysql_uri():
+    return f"mysql+pymysql://{user}:{password}@{host}:{port}/{schema}?charset=utf8mb4"
+
 def get_sqlite_uri():
     return "sqlite:///./sqlite.db"
 
 Base = declarative_base()
-DB_URL = get_async_mysql_uri()
+DB_URL = get_sync_mysql_uri()
 
 engine = create_async_engine(get_async_mysql_uri(), echo=True)
 session_factory = async_sessionmaker(bind=engine)
