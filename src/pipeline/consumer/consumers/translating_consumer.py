@@ -6,7 +6,6 @@ from pipeline.kafka_config import (
     VALUE_SERIALIZER
 )
 from .consumer import Consumer
-from article.domain.model import Article
 import boto3, asyncio, os, json
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
@@ -46,7 +45,6 @@ class TranslatingConsumer(Consumer):
                 print(f"🌹 raw.article에서 받았다.{msg.value['title']}")
                 result = await self.translate(msg)
                 sending_message = json.dumps(result.value)
-                print(result)
                 await self.producer.send_and_wait(topic='article.saving.requests', value=sending_message)
         except Exception as e:
             print(f"error: {e}")
