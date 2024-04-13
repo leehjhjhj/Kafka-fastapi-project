@@ -42,7 +42,7 @@ class RawArticleConsumer(Consumer):
             async for msg in self.consumer:
                 if self._is_keyword_in_title(msg) and not await self._is_exist_article(msg):
                     try:
-                        print(f"✅ {msg} sending")
+                        print("🛂")
                         sending_message = json.dumps(msg.value)
                         await self.producer.send_and_wait(topic='article.translation.requests', value=sending_message)
                     except Exception as e:
@@ -68,7 +68,7 @@ class RawArticleConsumer(Consumer):
         keyword_set = set()
         if source_language == "ko":
             keyword_set.update(["일본", "日", "기시다", "주한", "미일", "북일", "한일"])
-        elif source_language == "jp":
+        elif source_language == "ja":
             keyword_set.update(["韓国", "韓"])
 
         for i in range(len(title)):
