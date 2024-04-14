@@ -1,4 +1,4 @@
-from config import Base
+from core.config import Base
 from sqlalchemy import Column, BigInteger, String, Integer, DateTime
 
 class Article(Base):

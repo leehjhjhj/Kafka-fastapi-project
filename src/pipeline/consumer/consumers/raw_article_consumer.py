@@ -8,7 +8,7 @@ from pipeline.kafka_config import (
 )
 from .consumer import Consumer
 from datetime import datetime
-from config import AsyncSession
+from core.config import AsyncSession
 from article.domain.model import Article
 from sqlalchemy import select, cast, Date
 import json

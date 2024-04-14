@@ -5,7 +5,7 @@ from pipeline.kafka_config import (
 )
 from .consumer import Consumer
 from article.domain.model import Article
-from config import AsyncSession
+from core.config import AsyncSession
 from datetime import datetime
 
 class SavingConsumer(Consumer):
