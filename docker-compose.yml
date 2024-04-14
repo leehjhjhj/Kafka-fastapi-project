@@ -5,7 +5,7 @@ services:
     ports:
       - 80:80
       - 443:443
-    image: 654654343720.dkr.ecr.ap-northeast-2.amazonaws.com/koaza-app:latest
+    image: 654654343720.dkr.ecr.ap-northeast-2.amazonaws.com/koaza-nginx:latest
     depends_on:
       - app
     platform: linux/amd64
@@ -19,6 +19,6 @@ services:
     ports:
       - "8000:8000"
     platform: linux/amd64
-    image: 654654343720.dkr.ecr.ap-northeast-2.amazonaws.com/koaza-nginx:latest
+    image: 654654343720.dkr.ecr.ap-northeast-2.amazonaws.com/koaza-app:latest
     env_file:
       - .env
