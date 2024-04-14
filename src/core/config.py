@@ -1,7 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-from contextlib import contextmanager
 from sqlalchemy.ext.asyncio import async_scoped_session, create_async_engine, async_sessionmaker
 import asyncio
 import os
