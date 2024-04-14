@@ -1,5 +1,19 @@
 version: '3'
 services:
+  app:
+    build:
+      context: .
+      dockerfile: ./scripts/app/Dockerfile
+    volumes:
+      - ./:/project/code
+    working_dir: /project/src
+    command: uvicorn main:app --host 0.0.0.0 &
+    ports:
+      - "8000:8000"
+    platform: linux/amd64
+    image: 654654343720.dkr.ecr.ap-northeast-2.amazonaws.com/koaza-app:latest
+    env_file:
+      - .env
   nginx:
     build: ./scripts/nginx
     ports:
@@ -9,16 +23,3 @@ services:
     depends_on:
       - app
     platform: linux/amd64
-  app:
-    build:
-      context: .
-      dockerfile: ./scripts/app/Dockerfile
-    volumes:
-      - ./:/project/code
-    command: ["./scripts/docker_compose_command.sh"]
-    ports:
-      - "8000:8000"
-    platform: linux/amd64
-    image: 654654343720.dkr.ecr.ap-northeast-2.amazonaws.com/koaza-app:latest
-    env_file:
-      - .env
