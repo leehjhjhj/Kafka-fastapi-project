@@ -1,5 +1,5 @@
 from aiokafka import AIOKafkaConsumer, AIOKafkaProducer
-from pipeline.kafka_config import (
+from core.kafka_config import (
     KAFKA_BOOTSTRAP_SERVERS,
     VALUE_DESERIALIZER,
     loop,
